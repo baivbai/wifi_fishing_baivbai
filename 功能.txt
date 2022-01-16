@@ -37,16 +37,6 @@ label { color: #333; display: block; font-style: italic; font-weight: bold; }
 
 
 
-
-
-
-
-
-
-
-
-
-
 如果洪水不能用,
 嘿，朋友，我是 Kedar，你有没有想阻止所有的 WiFi信号？或者只是想从 WiFi 踢某人或邻居 WiFi 。那么，本玩法是你等待结束的时刻了。这是为你提供的、仅需 $8 的 DIY Wifi 干扰器。
 
@@ -60,21 +50,8 @@ label { color: #333; display: block; font-style: italic; font-weight: bold; }
 
 Let's do it!
 
-干扰器的干扰原理：https://youtu.be/N5JVQ-m5Kd0
 
-您可以使用此移动应用程序，来控制此 Wifi 干扰器：http://geni.us/PQhB
-
-步骤1：准备好零件！
-为了制作这个 WiFi 干扰器，你只需要一个 ESP8266。
-
-您可以购买一个带有 NodeMCU 固件的特定版本 ESP8266，它很容易编程没有任何程序员。
-
-除此，按你的需要，你还需要一个电池。
-
-步骤2：准备好 Arduino 编译器
-从 Arduino 网站下载最新的 Arduino 编译器：
-
-https://www.arduino.cc/en/Main/Software
+这个只能是esp8266可以,开发板的版本必须是早的2.0.0版本,才有int wifi_send_pkt_freedom这个单独发包的方法.
 
 安装 Arduino，并打开它
 打开 File -> Preferences
@@ -91,42 +68,11 @@ typedef void (**freedom_outside_cb__t)(uint8 status);
 int wifi_register_send_pkt_freedom_cb(freedom_outside_cb_t cb); 
 void wifi_unregister_send_pkt_freedom__cb(void); 
 int wifi_send_pkt_freedom(uint8 **buf, int len, bool sys_seq);
-　　
-
-步骤3：下载项目
-从这里下载项目文件：http://geni.us/A5cOYc
+　
+ 
+编辑项目
 在 Arduino 中打开 Wifi Jammer > esp8266_deauther > esp8266_deauther.ino
 在 Tools > Board 中选择 ESP8266。我使用的是 NodeMCU 0.9，但您可以尝试使用 NodeMCU 1.0 或通用 ESP8266 模块。
 从 Tools > Programmer > ArduinoISP 中选择编程器
 从 Tools > Port 中选择正确的端口号
-烧录（Upload）
-您的 Wifi 干扰器现在准备好了！
-
-步骤4：如何使用 Wifi 干扰器
-1.首先打开 ESP8266 电源
-
-如果您有 USB OTG 线，则可以使用智能手机。或带有电源或 USB 墙壁适配器的 MicroUSB 线。
-
-2.现在您可以使用任何智能手机或 PC 控制干扰器，只需连接到ESP8266模块即可
-
-从 Mobile 或 PC 或 MAC 扫描 WiFi 网络，并连接到 AndroidAP，密码是killwifi。您可以从上传的代码更改此 SSID 和密码，一旦连接，您可以使用这个 Android 应用程序来控制这个 Wifi 干扰器：http://geni.us/PQhB
-
-或者您可以打开浏览器，然后转到 192.168.4.1。
-
-3.您现在可以扫描网络...
-
-注意：扫描 ESP8266 将关闭其接入点，因此您可能需要进行设置并手动重新连接到WiFi网络。
-
-...并开始不同的攻击。
-
-4.单击 attack 选项
-
-选择 deauth all
-
-大家在 WiFi 上的繁荣都应该断开连接
-
-你也可以尝试其他的攻击
-
-Happy hacking :)
-
-转载于:https://www.cnblogs.com/kekeoutlook/p/10687109.html
+烧录（Upload)
